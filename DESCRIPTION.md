@@ -36,6 +36,7 @@ This function creates a DataFrame where:
 Example:
 ```python
 {"name": "x", "reps": [0, 5, -5]}
+```
 
 If the number of representative values ("reps") is inconsistent across features,
 the function raises a clear "ValueError" to ensure the structure of the seed
