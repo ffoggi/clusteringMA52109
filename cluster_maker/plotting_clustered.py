@@ -13,58 +13,49 @@ import matplotlib.pyplot as plt
 
 
 def plot_clusters_2d(X, labels, centroids=None, title="Cluster plot"):
-    plt.figure(figsize=(10, 7))
-    plt.style.use("seaborn-v0_8")
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    scatter = plt.scatter(
-        X[:, 0], 
-        X[:, 1], 
-        c=labels, 
-        cmap="viridis",
-        s=70,
-        alpha=0.8,
-        edgecolors="black",
-        linewidth=0.4
-    )
+    scatter = ax.scatter(X[:, 0], X[:, 1], c=labels, cmap="viridis", alpha=0.7, s=35)
 
     if centroids is not None:
-        plt.scatter(
-            centroids[:, 0], 
+        ax.scatter(
+            centroids[:, 0],
             centroids[:, 1],
-            c="white",
-            edgecolors="black",
-            s=300,
             marker="X",
-            linewidth=1.5,
+            s=200,
+            c="black",
             label="Centroids"
         )
 
-    plt.title(title, fontsize=18, fontweight="bold")
-    plt.xlabel("Feature 1", fontsize=14)
-    plt.ylabel("Feature 2", fontsize=14)
-    plt.grid(alpha=0.3)
-    plt.colorbar(scatter, label="Cluster label")
+    ax.set_title(title)
+    ax.set_xlabel("Feature 1")
+    ax.set_ylabel("Feature 2")
+    ax.legend()
+    cbar = plt.colorbar(scatter)
+    cbar.set_label("Cluster label")
 
-    if centroids is not None:
-        plt.legend()
-
-    fig = plt.gcf()
+    fig.tight_layout()
     plt.close()
-    return fig
+
+    return fig, ax
+
 
 
 
 def plot_elbow(k_values, inertias, title="Elbow Curve"):
-    plt.figure(figsize=(10, 7))
-    plt.style.use("seaborn-v0_8")
+    import matplotlib.pyplot as plt
 
-    plt.plot(k_values, inertias, marker="o", markersize=10, linewidth=2)
-    plt.title(title, fontsize=18, fontweight="bold")
-    plt.xlabel("Number of clusters (k)", fontsize=14)
-    plt.ylabel("Inertia", fontsize=14)
-    plt.grid(alpha=0.3)
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    fig = plt.gcf()
+    ax.plot(k_values, inertias, marker="o", markersize=7, linewidth=2)
+
+    ax.set_title(title, fontsize=14)
+    ax.set_xlabel("Number of clusters (k)", fontsize=12)
+    ax.set_ylabel("Inertia", fontsize=12)
+    ax.grid(True, linestyle="--", alpha=0.6)
+
+    fig.tight_layout()
+    
     plt.close()
-    return fig
-
+    return fig, ax
