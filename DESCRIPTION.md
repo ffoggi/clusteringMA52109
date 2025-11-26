@@ -365,6 +365,13 @@ The script performs the following actions:
 The demo script provides a complete example of how the package is intended
 to be used in practice.
 
+## 10. PCA Extension – `pca_tools.py`
+
+As part of Task 6, an additional module was added to provide PCA-based
+dimensionality reduction using scikit-learn. The function "apply_pca(X, n_components)"
+reduces the dataset to a smaller number of components before clustering.
+A dedicated unit test validates numerical stability and proper error handling.
+
 
 # Summary
 
@@ -377,7 +384,8 @@ to be used in practice.
 - evaluation metrics,  
 - visualisation tools,  
 - a high-level orchestration interface,  
-- and a ready-to-use demo script.
+- a ready-to-use demo script,
+- and an optional PCA-based dimensionality reduction module added as part of an advanced extension.
 
 Its modular structure allows students to understand each step of the workflow,
 debug individual components, and extend the package with new methods or analyses.
